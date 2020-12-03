@@ -1,3 +1,4 @@
+"use strict";
 //A function that sort's an Array of Student objects...
 var __spreadArrays = (this && this.__spreadArrays) || function () {
     for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;

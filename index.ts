@@ -7,15 +7,16 @@ let students = [
     { name: 'Mayur', age: 22 }
 ];
 
+
 interface Student {
     name: string,
-    age : number
+    age: number
     // age ?: number
 }
 
 function sortByName(arr: Student[]) {
     const copiedArr = [...arr];
-    copiedArr.sort(function (first, second) {
+    copiedArr.sort((first, second) => {
         return first.name.localeCompare(second.name);
     })
 
