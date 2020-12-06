@@ -69,3 +69,112 @@ function greet(nameIn: string) {
 
 greet(toBeGreeted);
 // greet(anInt);
+
+
+/*interface Label {
+    label: string
+}*/
+
+/*function printLabel(labelObj: { label: string }) {
+    console.log(labelObj.label);
+}
+
+printLabel({ label: "Some name" });*/
+
+
+interface SquareConfig {
+    color?: string;
+    width?: number;
+}
+
+
+function createSquare(config: SquareConfig): { color: string; area: number } {
+    // let newSquare = { color: "white", area: 100 };  //valid 1......
+    // let newSquare : { color: string, area: number } = {color: "", area: 0}; //{ color: string; area: number };   //valid 2......
+    // let newSquare: any = {}; //valid 3......
+    let newSquare = { color: "", area: 0 }; //valid 4......
+
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+}
+
+let mySquare = createSquare({ color: "black" });
+
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let p1: Point = { x: 10, y: 20 };  //Members are non changeable
+// const p1: Point = { x: 10, y: 20 };  //variable itself is non changeable
+
+const p1x = { x: 10, y: 20 };   //variable itself is non changeable
+
+// p1.x = 5; // error!  //since its readonly...
+p1x.x = 29;
+
+// p1x =  p2x;
+
+p1 = { x: 20, y: 15 };
+
+
+interface SquareConfigNew {
+    color?: string;
+    width?: number;
+    [propName: string]: any;
+}
+
+function doSomething(config: SquareConfigNew) {
+    let color = config.color;
+    let width = config.width;
+    let someNotPresent = config.notPresent;
+}
+
+let someOtherConfig = { height: 100, radius: 30 };
+doSomething(someOtherConfig);
+
+
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+
+// let mySearch: SearchFunc;
+
+// mySearch = function (source: string, subString: string) {
+//     let result = source.search(subString);
+//     return result > -1;
+// };
+
+function Search(searchFunc: SearchFunc) {
+    return searchFunc("Wikepedia", "dia");
+}
+
+
+interface StringArray {
+    [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+
+// myArray["1"] = myArray[1]; // Apparently this is fine in typescript......
+
+let myStr: string = myArray[0];
+
+interface Animal {
+    name: string;
+}
+
+interface Dog extends Animal {
+    breed: string;
+}
+
+// Error: indexing with a numeric string might get you a completely separate type of Animal!
+interface NotOkay {
+    [x: string]: Animal;
+}
