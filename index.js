@@ -75,3 +75,19 @@ function doSomething(config) {
 }
 var someOtherConfig = { height: 100, radius: 30 };
 doSomething(someOtherConfig);
+// let mySearch: SearchFunc;
+// mySearch = function (source: string, subString: string) {
+//     let result = source.search(subString);
+//     return result > -1;
+// };
+function Search(searchFunc) {
+    return searchFunc("Wikepedia", "dia");
+}
+var myArray;
+myArray = ["Bob", "Fred"];
+// myArray["1"] = myArray[1]; // Apparently this is fine in typescript......
+var myStr = myArray[0];
+var square = {};
+square.color = "blue";
+square.sideLength = 10;
+console.log(square);
